@@ -6,7 +6,6 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     # pkgs.go
-    pkgs.entr
     pkgs.python3
     # pkgs.python311Packages.pip
     # pkgs.nodejs_20
@@ -48,7 +47,6 @@
       onStart = {
         # Example: start a background task to watch and re-build backend code
         # watch-backend = "npm run watch-backend";
-        start-script = "ls main.py | entr -s 'clear && python main.py'";
         default.openFiles = [ "main.py" ];
       };
     };
