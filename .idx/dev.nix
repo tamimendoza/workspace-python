@@ -6,7 +6,8 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     # pkgs.go
-    # pkgs.python311
+    pkgs.entr
+    pkgs.python3
     # pkgs.python311Packages.pip
     # pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
@@ -41,12 +42,14 @@
         # Example: install JS dependencies from NPM
         # npm-install = "npm install";
         # Open editors for the following files by default, if they exist:
-        default.openFiles = [ ".idx/dev.nix" "README.md" ];
+        default.openFiles = [ "main.py" ];
       };
       # Runs when the workspace is (re)started
       onStart = {
         # Example: start a background task to watch and re-build backend code
         # watch-backend = "npm run watch-backend";
+        start-script = "ls main.py | entr -s 'clear && python main.py'";
+        default.openFiles = [ "main.py" ];
       };
     };
   };
